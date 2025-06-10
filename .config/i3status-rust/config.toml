@@ -1,0 +1,69 @@
+# i3status-rust configuration file
+# Place this in ~/.config/i3status-rust/config.toml
+[theme]
+theme = "plain"
+[theme.overrides]
+idle_bg = "#3f3f3f"
+idle_fg = "#dcdccc"
+info_bg = "#7f9f7f"
+info_fg = "#dcdccc"
+good_bg = "#7f9f7f"
+good_fg = "#dcdccc"
+warning_bg = "#dfaf8f"
+warning_fg = "#3f3f3f"
+critical_bg = "#cc9393"
+critical_fg = "#3f3f3f"
+separator = ""
+separator_bg = "auto"
+separator_fg = "auto"
+[icons]
+icons = "awesome4"
+# [[block]]
+# block = "focused_window"
+# max_width = 50
+[[block]]
+block = "net"
+device = "wlan0"
+format = " $icon $ssid $signal_strength "
+missing_format = " $icon Disconnected "
+# Bluetooth block may not be available in 0.33.2
+# [[block]]
+# block = "bluetooth"
+[[block]]
+block = "sound"
+format = " $icon $volume "
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+[[block]]
+block = "cpu"
+interval = 1
+format = " $icon $utilization% "
+[[block]]
+block = "memory"
+format = " $icon $mem_used_percents "
+format_alt = " $icon $swap_used_percents "
+interval = 5
+warning_mem = 80
+warning_swap = 80
+critical_mem = 95
+critical_swap = 95
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "available"
+format = " $icon $available "
+interval = 20
+warning = 20.0
+alert = 10.0
+[[block]]
+block = "battery"
+interval = 10
+format = " $icon $percentage $time "
+# Remove backlight block if no devices found
+# [[block]]
+# block = "backlight"
+# device = "intel_backlight"
+# format = " $icon $brightness "
+[[block]]
+block = "time"
