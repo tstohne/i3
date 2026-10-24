@@ -36,11 +36,11 @@ workspace_auto_back_and_forth yes
 floating_modifier $mod
 
 # --- Workspaces ------------------------------------------------------------
-set $ws1 "1:term"
-set $ws2 "2:web"
-set $ws3 "3:emacs"
-set $ws4 "4:daw"
-set $ws5 "5"
+set $ws1 "1:Web"
+set $ws2 "2:Term"
+set $ws3 "3:Emacs"
+set $ws4 "4:Chat"
+set $ws5 "5:Etc"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -48,9 +48,10 @@ set $ws9 "9"
 set $ws10 "10"
 
 # Verify classes with: xprop WM_CLASS
-assign [class="(?i)thorium"] $ws2
-assign [class="(?i)emacs"]   $ws3
-assign [class="(?i)ardour"]  $ws4
+assign [class="(?i)thorium"]    $ws1
+assign [class="(?i)emacs"]      $ws3
+assign [class="(?i)mattermost"] $ws4
+assign [class="(?i)ardour"]     $ws5
 
 for_window [class="(?i)ardour" window_role="(?i)pop-up|dialog"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
@@ -192,7 +193,16 @@ bar {
 }
 
 # --- Startup ---------------------------------------------------------------
+# Per-workspace autostart. Thorium, Emacs and Mattermost are placed by the
+# assign rules above; kitty is launched from inside Term, since assigning
+# every kitty window would also catch $mod+Return terminals.
+exec --no-startup-id /usr/bin/thorium-browser
+exec --no-startup-id i3-msg 'workspace number 2; exec /usr/bin/kitty'
+exec --no-startup-id /usr/bin/emacsclient -r -a ''
+exec --no-startup-id /usr/bin/mattermost-desktop
+
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id picom --backend glx --vsync --no-fading-openclose
 exec --no-startup-id autotiling
+exec --no-startup-id dunst
