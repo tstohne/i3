@@ -198,7 +198,7 @@ bar {
 # every kitty window would also catch $mod+Return terminals.
 exec --no-startup-id /usr/bin/thorium-browser
 exec --no-startup-id i3-msg 'workspace number 2; exec /usr/bin/kitty'
-exec --no-startup-id /usr/bin/emacsclient -r -a ''
+exec --no-startup-id /usr/bin/emacsclient -c
 exec --no-startup-id /usr/bin/mattermost-desktop
 
 exec --no-startup-id nm-applet
