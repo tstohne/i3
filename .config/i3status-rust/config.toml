@@ -16,54 +16,67 @@ critical_fg = "#3f3f3f"
 separator = ""
 separator_bg = "auto"
 separator_fg = "auto"
+
 [icons]
 icons = "awesome4"
+
 # [[block]]
 # block = "focused_window"
 # max_width = 50
+
 [[block]]
 block = "net"
 device = "wlan0"
+interval = 5
 format = " $icon $ssid $signal_strength "
 missing_format = " $icon Disconnected "
+
 # Bluetooth block may not be available in 0.33.2
 # [[block]]
 # block = "bluetooth"
+
 [[block]]
 block = "sound"
 format = " $icon $volume "
 [[block.click]]
 button = "left"
 cmd = "pavucontrol"
+
 [[block]]
 block = "cpu"
-interval = 1
+interval = 10
 format = " $icon $utilization% "
+
 [[block]]
 block = "memory"
 format = " $icon $mem_used_percents "
 format_alt = " $icon $swap_used_percents "
-interval = 5
+interval = 15
 warning_mem = 80
 warning_swap = 80
 critical_mem = 95
 critical_swap = 95
+
 [[block]]
 block = "disk_space"
 path = "/"
 info_type = "available"
 format = " $icon $available "
-interval = 20
+interval = 60
 warning = 20.0
 alert = 10.0
+
 [[block]]
 block = "battery"
-interval = 10
+driver = "upower"
 format = " $icon $percentage $time "
+
 # Remove backlight block if no devices found
 # [[block]]
 # block = "backlight"
 # device = "intel_backlight"
 # format = " $icon $brightness "
+
 [[block]]
 block = "time"
+interval = 60
