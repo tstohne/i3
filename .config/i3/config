@@ -3,7 +3,7 @@
 
 set $mod Mod4
 
-font pango:SauceCodePro Nerd Font 12
+font pango:FiraCode Nerd Font Medium 11
 
 # --- Input -----------------------------------------------------------------
 exec_always --no-startup-id setxkbmap se -option caps:swapescape
@@ -48,7 +48,7 @@ set $ws9 "9"
 set $ws10 "10"
 
 # Verify classes with: xprop WM_CLASS
-assign [class="(?i)thorium"]    $ws1
+assign [class="(?i)brave-browser"]    $ws1
 assign [class="(?i)emacs"]      $ws3
 assign [class="(?i)mattermost"] $ws4
 assign [class="(?i)ardour"]     $ws5
@@ -80,7 +80,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # --- Applications (launch-or-focus) ----------------------------------------
 bindsym $mod+Return exec kitty
-bindsym $mod+b exec /opt/thorium-browser/thorium
+bindsym $mod+b exec /opt/brave-bin/brave-browser
 bindsym $mod+e exec emacsclient -c
 bindsym $mod+u exec ardour9
 bindsym $mod+Shift+t exec thunar
@@ -180,7 +180,7 @@ bindsym $mod+r mode "resize"
 bar {
     position top
     status_command i3status-rs ~/.config/i3status-rust/config.toml
-    font pango:SauceCodePro Nerd Font 12
+    font pango:FiraCode Nerd Font Medium 11
     colors {
         background $bg-color
         separator #757575
@@ -196,7 +196,7 @@ bar {
 # Per-workspace autostart. Thorium, Emacs and Mattermost are placed by the
 # assign rules above; kitty is launched from inside Term, since assigning
 # every kitty window would also catch $mod+Return terminals.
-exec --no-startup-id /usr/bin/thorium-browser
+exec --no-startup-id /opt/brave-bin/brave-browser
 exec --no-startup-id i3-msg 'workspace number 2; exec /usr/bin/kitty'
 exec --no-startup-id /usr/bin/emacsclient -c
 exec --no-startup-id /usr/bin/mattermost-desktop
