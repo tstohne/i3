@@ -49,8 +49,8 @@ set $ws10 "10"
 
 # Verify classes with: xprop WM_CLASS
 assign [class="(?i)brave-browser"]    $ws1
-assign [class="(?i)emacs"]      $ws3
-assign [class="(?i)mattermost"] $ws4
+assign [class="(?i)Emacs"]      $ws3
+assign [class="(?i)mattermost-desktop"] $ws4
 assign [class="(?i)ardour"]     $ws5
 
 for_window [class="(?i)ardour" window_role="(?i)pop-up|dialog"] floating enable
@@ -181,14 +181,20 @@ bar {
     position top
     status_command i3status-rs ~/.config/i3status-rust/config.toml
     font pango:FiraCode Nerd Font Medium 11
+    tray_output primary
+    tray_padding 4
+    workspace_min_width 36
+    # strip_workspace_numbers yes   # show "Web" instead of "1:Web"
     colors {
         background $bg-color
-        separator #757575
-        #                  border             background         text
-        focused_workspace  $bg-color          $bg-color          $text-color
-        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-        active_workspace   $inactive-bg-color $inactive-bg-color $inactive-text-color
-        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+        statusline #dcdccc
+        separator  #656555
+        #                  border    background         text
+        focused_workspace  #dfaf8f   $bg-color          #f0dfaf
+        active_workspace   #656555   $bg-color          #8cd0d3
+        inactive_workspace $bg-color $bg-color          #9f9f9f
+        urgent_workspace   #cc9393   $bg-color          #cc9393
+        binding_mode       #cc9393   $bg-color          #cc9393
     }
 }
 
